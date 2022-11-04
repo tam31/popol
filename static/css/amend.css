@@ -1,0 +1,182 @@
+.sidebar{
+    width: 18%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #fafafa !important;
+    position: absolute !important;
+    overflow: auto;
+    margin: 0 !important;
+    z-index: 2;
+}
+.sidebarBox{
+    margin: 70px 5px 0px 5px;
+}
+
+.map_size{
+    float:left;
+    width:80%;
+    height:780px
+}
+
+.baseName{
+    color: #ff9800 !important;
+    font-size: 1.4rem;
+    font-weight: 550;
+}
+
+.cityName {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.list_text{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.div1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+}
+
+.tour{
+    box-shadow: rgb(31 38 135 / 15%) 0px 8px 32px 0px !important;
+    background: rgba(255, 255, 255, 1) !important;
+    border-radius: 4px !important;
+    border-width: initial !important;
+    border-style: none !important;
+    border-color: initial !important;
+    border-image: initial !important;
+    margin: 4px !important; display: flex;
+    align-items: center; flex-direction: row;
+    padding: 10px;
+    width: 300px;
+    position: relative;
+    touch-action: none;
+    user-select: none;
+}
+
+.div2{
+    position: relative;
+}
+
+.check1{
+    width: 95px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 2px;
+    min-width: 65px;
+}
+
+.div3{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: space-around;
+    padding: 8px
+}
+
+.div4{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 180px;
+    font-size: 16px;
+    font-weight: 550;
+}
+
+.but_plan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    padding: 8px 0;
+}
+.but{
+    width: 100%;
+    height: 40px;
+    line-height: 0;
+    background-color: #ff1744 !important;
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 20%) !important;
+    border: 0;
+    outline: 0;
+
+}
+.but_text{
+    color: #fff;
+    text-align: center;
+}
+
+
+.checklist button{
+    width:33%;
+    border: 1px solid skyblue;
+    background-color: rgba(0,0,0,0);
+    color: skyblue;
+    padding: 5px;
+
+}
+.checklist button:hover{
+    color:white;
+    background-color: skyblue;
+}
+
+
+.list_but1{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-right: -4px;
+}
+.list_but2{
+
+    margin-right: -3px;
+    margin-left: -3px;
+}
+.list_but3{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: -3px;
+}
+
+.searchbox{
+    display: flex;
+}
+
+.searchclick{
+    background-color: white !important;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchinput{
+    text-align: center;
+    width:100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+}
+
+.butappend{
+    width:50px;
+    background-color: white;
+    color: skyblue;
+    font-weight: 540;
+    border: 0;
+    outline: 0;
+}
+
+.delete-link{
+    width:50px;
+    background-color: white;
+    color: #FA8072;
+    font-weight: 540;
+    border: 0;
+    outline: 0;
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <title>Document</title>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+
+      <nav class="menu-bar">
+        <div class = "index">
+          <!-- 프로필 이미지 -->
+          <div>
+            <h2 class="name">여행일정 다시보기</h2>
+          </div>
+<!--          <br>-->
+<!--          &lt;!&ndash; 목차 내용 &ndash;&gt;-->
+<!--          <h3 class="click">ABOUT</h3>-->
+<!--          <h3 class="click">EXPERIENCE</h3>-->
+<!--          <h3 class="click">EDUCATION</h3>-->
+<!--          <h3 class="click">INTERESTS</h3>-->
+        </div>
+      </nav>
+
+    <div class="center">
+        <div class="list-type5">
+            <ol>
+
+
+            {% for value in check %}
+                <li>
+                    <a href="{% url 'common:recheck' value.id %}">여행지 경로보기</a>
+                </li>
+            {% endfor %}
+
+            </ol>
+        </div>
+    </div>
+
+<!--<h1>성공</h1>-->
+<!--<h2>{{ user.pk }} : {{ user.username }}</h2>-->
+
+
+
+<!--{% for value in check %}-->
+<!--<li>{{ forloop.counter }}</li>-->
+<!--<h3><a href="{% url 'common:recheck' value.id %}">{{ value.id }}</a></h3>-->
+
+
+
+<!--{% endfor %}-->
+
+
+{% endblock %}
+</body>
+</html>

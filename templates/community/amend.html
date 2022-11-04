@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <style>
+    .label {margin-bottom: 96px;}
+    .label * {display: inline-block;vertical-align: top;}
+    .label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
+    .label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
+    .label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
+    </style>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/JavaScript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/JavaScript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--동적움직임-->
+    <script type="text/javascript" src="/static/js/amend_move.js"></script>
+    <link rel="stylesheet" href="/static/css/amend.css">
+</head>
+<body>
+        {% extends 'base.html'%}
+        {% block content %}
+        {{data}}
+        <div class="sidebar">
+            <div class="sidebarBox">
+                <div class="cityName">부산</div>
+                <div class="baseName">출발날짜</div>
+                <h4 name="date">{{day}}</h4>
+                <div class="baseName">도착날짜</div>
+                <h4>{{end_day}}</h4>
+                <div class="baseName">시작시간</div>
+                <h4>{{time}}</h4>
+                <div class="baseName">태그</div>
+                <h4>{{tag}}</h4>
+            </div>
+
+            <form id="sortTableForm" name="sortTableForm">
+                {% csrf_token %}
+                <input type="hidden" id = 'user_ID' name ='user_ID' value={{ user.username }}><br/><!--숨김으로 바꾸기,check에 저장하기 위해-->
+            <input type="hidden" id="result" name="result" value=""/>
+                <h1>여&nbsp;행&nbsp;일&nbsp;정</h1>
+                <div class="Travel">
+                    {% for i in plans%}
+                    <div class="div1">
+                        <div class="tour" value='{{i.name}}'>
+                            <div class="div2">
+                                <img src={{i.url}} class="check1">
+                            </div>
+                            <!--명이랑 삭제-->
+                            <div class="div3">
+                                <div class="div4" value='{{i.name}}'>{{ i.name}}</div>
+                                <div>
+                                    <button class="delete-link">삭제</button>
+<!--                                    <a href="#" class="delete-link">삭제</a>-->
+                                </div>
+
+                                <div class="check2" value={{i.Latitude}}></div>
+                                <div class="check3" value={{i.Lognitude}}></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="but_plan">
+                    <button class="but" type="submit" onClick="wujuSonyeoTransmit();">
+                        <h6 class="but_text">선택완료</h6>
+                    </button>
+                </div>
+
+            </form>
+            <!--삭제코드-->
+            <script type="text/javascript" src="/static/js/amend_remove.js"></script>
+            </div>
+
+
+        <div class="map_size">
+            <div id="map" style="width:auto;height:100%;"></div>
+                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a85b858e7152976bb60b0c2e97096fbd"></script>
+                <!--지도표시-->
+                {{ plans | json_script:'plans1'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->
+                <script type="text/javascript" src="/static/js/amend_map.js"></script>
+
+        </div>
+
+        <!--검색기능-->
+        <div style="background-color: #fafafa; float:right; width:20%; height: 100%;" >
+            <div class="searchbox">
+                <div style="width: 100%;">
+                    <input type="text" id="search" class="searchinput" placeholder="검색어를 입력하시오">
+                </div>
+                <button class="searchclick" onclick="searchBtn()">
+                    <i style="font-family: 'Material Icons'; color: #98dde3; font-size: 2rem ">search</i>
+                </button>
+            </div>
+            <div class="search"></div>
+<!--            <section class="container2">-->
+<!--                <h1>검색기능</h1>-->
+
+<!--                <button onclick="searchBtn()">search</button>-->
+
+<!--            </section>-->
+                <!--리스트기능-->
+            <br/>
+            <div class="checklist" >
+                <button class="list_but1" onclick="plan_tour()">
+                    <i style="font-family: 'Material Icons';">place</i>
+                    <span class="list_text">관광지</span>
+                </button>
+                <button class="list_but2" onclick="plan_res()">
+                    <i style="font-family: 'Material Icons';">place</i>
+                    <span class="list_text">식당</span>
+                </button>
+                <button class="list_but3" onclick="plan_stay()">
+                    <i style="font-family: 'Material Icons';">place</i>
+                    <span class="list_text">숙소</span>
+                </button><br>
+            </div>
+
+            <div class="container" style="margin: 4px; width:100%; height: 75vh; overflow: auto;" >
+            </div>
+
+            <!--검색, 리스트기능-->
+            {{ posts_js | json_script:'posts_js1'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->
+            {{ eats_js | json_script:'eats_js1'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->
+            {{ stays_js | json_script:'stays_js1'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->
+            <script type="text/javascript" src="/static/js/amend_list.js"></script>
+
+
+            <!--추가기능-->
+            <script type="text/javascript" src="/static/js/amend_append.js"></script>
+    </div>
+
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+ <div style="float: left; border-right:1px solid; width:400px; height: 80vh; overflow: auto;">
+    <h1>여&nbsp;행&nbsp;일&nbsp;정</h1>
+    <div>
+        <input type="button" onClick="newta();" value="전송"/>
+    </div>
+    <div class="check1" value="check"></div>
+
+ </div>
+<script>
+    function newta(e) {
+        console.log("클릭",$(e).attr('id'))
+        console.log(markers)
+        var num = parseInt($(e).attr('id'))
+
+        console.log(re[num])//네이버 방식
+        //네이버방식
+        console.log(re[num].name, re[num+1].name); //네이버방식
+<!--        var end= 'http://map.naver.com/index.nhn?slng='+re[num].lon+'&slat='+re[num].lat+'&stext='+re[num].name+'&elng='+re[num+1].lon+'&elat='+re[num+1].lat+'&etext='+re[num+1].name+'&menu=route&pathType=1'-->
+
+        //카카오방식
+        console.log(markers[num].Gb, markers[num].n.La, markers[num].n.Ma)//카카오방식
+        var end='https://map.kakao.com/?sX='+markers[num].n.La+'&sY='+markers[num].n.Ma+'&sName='+markers[num].Gb+'&eX='+markers[num+1].n.La+'&eY='+markers[num+1].n.Ma+'&eName='+markers[num+1].Gb
+        window.open(end)
+    }
+
+    var re = [{{re | safe }}]
+    console.log(re);
+    for(var i = 0 ; i<re.length ; i++){
+        var div1 = document.createElement('div'); //div 만들기-->
+        div1.style.cssText = "border:1px solid; padding:5px; width:320px; hight:300px; display: flex; flex-direction: column;";   //div style
+        div1.className = 'check';    //div class
+        div1.setAttribute("value", re[i].name)
+        if(i!==re.length-1){
+            console.log(re[i].name, re[i+1].name)
+        }
+
+
+         //이미지
+        var div2 = document.createElement('div');
+        div2.style.cssText = "border:1px solid; width:100px; float: left"
+        var x = document.createElement("IMG");
+        x.setAttribute('width', '100px');
+        x.setAttribute("src", re[i].url);
+        div2.appendChild(x); //div 텍스트 적기
+        div1.appendChild(div2);
+
+        //이름
+        var div3 = document.createElement('div');
+        div3.style.cssText = "height: 30%; width:300px; margin: 0 auto; flex-grow: 1;"
+        const message2 = document.createTextNode(re[i].name);
+        div3.appendChild(message2);
+        div1.appendChild(div3);
+
+         if(i!==re.length-1){
+            console.log("여기",i)
+            var div4 = document.createElement('input');
+            div4.setAttribute('type', 'button');
+            div4.setAttribute('onClick', 'newta(this)');
+            div4.setAttribute('value', '경로보기');
+            div4.setAttribute('id', i);
+            div4.setAttribute('class', 'chck5');
+
+            console.log(div4)
+
+            div1.appendChild(div4);
+        }
+
+        console.log(re[i].lat, re[i].lon)
+        $(".check1").append(div1);
+    }
+
+</script>
+
+<div id="map" style="width:75%;height:800px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a85b858e7152976bb60b0c2e97096fbd"></script>
+<script>
+    var markers=[] //카카오방식으로 위도경도이름을 찾기위해
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(35.1795543, 129.0756416), // 지도의 중심좌표
+            level:9, // 지도의 확대 레벨
+        };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+    var re = [{{re | safe }}]
+
+    for (var i = 0; i < re.length; i ++) {
+
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: new kakao.maps.LatLng(re[i].lat, re[i].lon), // 마커를 표시할 위치
+            title : re[i].name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image : markerImage // 마커 이미지
+        });
+        console.log(marker.n)//위도 경도
+        markers.push(marker)
+
+        var infowindow = new kakao.maps.InfoWindow({
+            content: re[i].name // 인포윈도우에 표시할 내용
+        });
+        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+    }
+    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+    function makeOverListener(map, marker, infowindow) {
+        return function() {
+            infowindow.open(map, marker);
+        };
+    }
+
+    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+    function makeOutListener(infowindow) {
+        return function() {
+            infowindow.close();
+        };
+    }
+</script>
+
+</body>
+</html>

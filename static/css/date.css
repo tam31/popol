@@ -1,0 +1,97 @@
+
+.sidebar{
+    width: 17%;
+    top: 0%;
+    left: 0;
+    height: 100%;
+    background-color: #ffffff;
+    position: absolute !important;
+    overflow: auto;
+    margin: 0 !important;
+    z-index: 2;
+}
+.sidebarBox{
+    margin: 70px 5px 0px 5px;
+}
+
+.cityName {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#parent {
+  height: 35px;
+  width: 100%;
+  display: table;
+}
+
+.child {
+  text-align: center;
+  display: table-cell;
+
+}
+
+
+.starttime{
+    text-align: center;
+    color: #ff9800 !important;
+    font-weight: 700;
+}
+
+.tag{
+    padding: 8px 1px !important;
+    background-color: #98dde3 !important;
+    color: #ffffff !important;
+    text-align: center;
+}
+
+.row {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.row label {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  width: 140px
+}
+
+.row label input[type="checkbox"] {
+  display: none;
+}
+
+.row label .icon-box {
+  position: relative;
+  display: flex;
+  width: 140px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #353746;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 21px;
+  transition: 0.5s;
+  user-select: none;
+}
+
+.row label input[type="checkbox"]:checked ~ .icon-box {
+  background: linear-gradient(138deg, #da2c4d, #f8ab37);
+  color: #fff;
+}
+
+.row label .icon-box span {
+  margin: 5px;
+  font-size: 18px;
+}
+
+.btn{
+    width: 100%;
+    line-height: 0;
+    background-color: #ff1744 !important;
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 20%) !important;
+
+}

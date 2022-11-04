@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style>
+    .label {margin-bottom: 96px;}
+    .label * {display: inline-block;vertical-align: top;}
+    .label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
+    .label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
+    .label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
+    </style>
+    <link rel="stylesheet" href="/static/css/check.css">
+</head>
+<body>
+
+{% extends 'base.html'%}
+{% block content %}
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+ <div class="sidebar">
+     <div class="sidebarBox">
+        <h1>여&nbsp;행&nbsp;일&nbsp;정</h1>
+     </div>
+    <div>
+        <div class="check1" value="check"></div>
+    </div>
+ </div>
+
+{{ re | json_script:'check'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->
+<script type="text/javascript" src="/static/js/check_plans.js"></script>
+
+    <div>
+        <div id="map" style="width:100%;height:800px; z-index: 1;"></div>
+
+        <!--지도-->
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a85b858e7152976bb60b0c2e97096fbd"></script>
+        {{ re | json_script:'check'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->
+        <script type="text/javascript" src="/static/js/check_map.js"></script>
+    </div>
+{% endblock %}
+</body>
+</html>
