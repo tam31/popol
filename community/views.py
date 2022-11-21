@@ -181,7 +181,7 @@ def Check(request):
                 print(Restaurant.objects.filter(name=value).values())
             except Restaurant.DoesNotExist:
                 try :
-                    re = Stay.objects.get(name=value)
+                    re = Stay.objects.filter(name=value).first() #똑같은 데이터가 겹쳐서 임시해결책
                     print('숙소성공', re.visitCnt)
 
                     re.visitCnt += 1
