@@ -32,22 +32,30 @@ def ProfileView(request, pk):
     user = get_object_or_404(User, pk=pk)
 
     print(1111, user) #로그인한 ID 확인
-    check = Schedule.objects.filter(user_id = user).values()
+    print(len(Schedule.objects.filter(user_id = user).values()))
+    if len(Schedule.objects.filter(user_id = user).values()) == 0:
+        context = {
+            'user': user, #로그인한 ID
+
+        }
+    else:
+        check = Schedule.objects.filter(user_id = user).values()
     # check = Schedule.objects.filter(user_id = user).values()[0]['schedule'] 이걸로 해야함
-    print(22223, check[0]['id']) #여기 고치기 아무것도 없을때 고치기!!
+        print(22223, check[0]['id']) #여기 고치기 아무것도 없을때 고치기!!
 
     #여기서부터는 다른거 연습(없애야 함)
-    ex = Schedule.objects.filter(id = check[0]['id']).values()
-    print(33333, ex[0]['schedule'])
+        ex = Schedule.objects.filter(id = check[0]['id']).values()
+        print(33333, ex[0]['schedule'])
     #
     # ex = json.dumps(list(check))
     # print(3333, ex)
-    context = {
-        'user': user, #로그인한 ID
-        'check': check # count()
-        # value()
-    }
 
+        context = {
+            'user': user, #로그인한 ID
+            'check': check # count()
+            # value()
+        }
+    print(context)
     return render(request, 'common/profile.html', context)
 
 def recheck(request, pk):
