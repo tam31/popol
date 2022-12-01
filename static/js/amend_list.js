@@ -1,3 +1,4 @@
+let dyndata1 = JSON.parse(document.getElementById('dyndata1').textContent)
 let posts1 = JSON.parse(JSON.parse(document.getElementById('posts_js1').textContent))
 let eats = JSON.parse(JSON.parse(document.getElementById('eats_js1').textContent))
 let stays = JSON.parse(JSON.parse(document.getElementById('stays_js1').textContent))
@@ -108,7 +109,7 @@ function searchBtn(){
 
 function plan_tour(){//관광지 리스트
     //console.log("관광지")
-    let posts = posts1
+    let posts = dyndata1
 
     //console.log($(".container").children().length) //자식노드 수
     if($(".container").children().length>0){ //자식노드 삭제
@@ -159,11 +160,11 @@ function plan_tour(){//관광지 리스트
 
          //마커표시를 위해
         var div6 = document.createElement('div');
-        div6.setAttribute("value", posts[i].Latitude) //위도
+        div6.setAttribute("value", posts[i].lat) //위도
         div3.append(div6)
 
         var div7 = document.createElement('div');
-        div7.setAttribute("value", posts[i].Longitude) //경도
+        div7.setAttribute("value", posts[i].lon) //경도
         div3.append(div7)
 
         div1.appendChild(div3); //마커

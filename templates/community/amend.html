@@ -122,6 +122,7 @@
             </div>
 
             <!--검색, 리스트기능-->
+            {{ dyndata | json_script:'dyndata1'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->
             {{ posts_js | json_script:'posts_js1'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->
             {{ eats_js | json_script:'eats_js1'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->
             {{ stays_js | json_script:'stays_js1'}} <!--파이썬의 필터링으로 인해 js는 json형태를 인식하지 못해 인식시켜줌-->

@@ -18,6 +18,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from datetime import date,datetime,time
 from community.recommend.algorithm import plan
 import json
+from community.recommend.tourlist import recommend
 # Create your views here.
 #
 
@@ -82,6 +83,7 @@ def Date(request):
 
         # print(plan(start_time, num, s))
         plans= plan(start_time, num, s)
+        dynamicdata = recommend(s)
         print("성공")
 
         data={
@@ -89,7 +91,8 @@ def Date(request):
             'time' : user.startime,
             'day' : user.startperiod,
             'end_day' : user.endperiod,
-            'plans' : plans
+            'plans' : plans,
+            'dyndata': dynamicdata
         }
 
         # print("여기", data['plans'][0])
