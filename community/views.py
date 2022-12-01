@@ -84,7 +84,7 @@ def Date(request):
         # print(plan(start_time, num, s))
         plans= plan(start_time, num, s)
         dynamicdata = recommend(s)
-        print("성공")
+        # print("성공")
 
         data={
             'tag' : s,
@@ -108,7 +108,7 @@ def Date(request):
 def Amend(request):
     if request.method == 'POST':
         # re =[]
-        print(request.method)
+        # print(request.method)
         re =request.POST['result']
         # print(re[0])
         data2 = {
@@ -128,12 +128,12 @@ def Amend(request):
         # print()
         # print(1111111, request.POST['user_ID'])
         # print(2222222, data2['re'])
-        print("post 성공")
+        # print("post 성공")
         return redirect('community:check')
     else:
-        print(request.method)
+        # print(request.method)
         data = request.session.get('data')
-        print(data, 11)
+        # print(data, 11)
 
 
         tours = Tour.objects.all()
@@ -173,7 +173,7 @@ def Check(request):
             print('성공')
             re.visitCnt += 1
             re.save()
-            print(Tour.objects.filter(name=value).values())
+            # print(Tour.objects.filter(name=value).values())
         except Tour.DoesNotExist:
             try:
                 re = Restaurant.objects.get(name=value)
@@ -181,7 +181,7 @@ def Check(request):
 
                 re.visitCnt += 1
                 re.save()
-                print(Restaurant.objects.filter(name=value).values())
+                # print(Restaurant.objects.filter(name=value).values())
             except Restaurant.DoesNotExist:
                 try :
                     re = Stay.objects.filter(name=value).first() #똑같은 데이터가 겹쳐서 임시해결책
@@ -189,7 +189,7 @@ def Check(request):
 
                     re.visitCnt += 1
                     re.save()
-                    print(Stay.objects.filter(name=value).values())
+                    # print(Stay.objects.filter(name=value).values())
                 except Stay.DoesNotExist:
                     re = None
 
