@@ -30,6 +30,6 @@
 ## 화면 구성 📺
 | 메인 페이지  |  일정수정 페이지   |  일정확정 페이지   |
 |------|---|---|
-| <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/11.png"/>   | img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/22.png"/> |img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/33.png"/>|   
+| <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/11.png"/>   | <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/22.png"/> | <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/33.png"/>|   
 | 여행지간 경로보기   |  마이페이지 확정된 여행일정 저장   |  
-| img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/44.png"/>   |  img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/66.png"/>     |
+| <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/44.png"/>   |  <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/66.png"/>     |
