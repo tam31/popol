@@ -1,4 +1,4 @@
-# virtual
+![img](/wiki/content1.png)
+![img](/wiki/content2.png)
 
-models.py 에 모델설계하기
-# popol
+---- 
