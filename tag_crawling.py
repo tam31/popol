@@ -28,7 +28,6 @@ def get_tour_tag(name):
     tag.append(name)
     for index in parse:
         tag_name = index.get_text()
-        print(tag_name)
         if "#" in tag_name:
             tag_name = tag_name[1:]
             if "힐링" in tag_name:

@@ -8,7 +8,7 @@ from community.models import Tour
 from community.models import Tag
 
 
-data = pd.read_csv('community/data/tour.csv')
+data = pd.read_csv('community/data/dataApi/tour.csv')
 data.dropna(axis=0, inplace=True)
 #
 #
