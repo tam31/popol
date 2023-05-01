@@ -14,8 +14,6 @@ with open('tag.csv', newline='') as f:
     tag = list(reader)
 
 for index in tag:
-    print(index[0])
-    print(Tour.objects.get(name = index[0]))
     q = Tour.objects.get(name=index[0])
 
     for value in index[1:]:
