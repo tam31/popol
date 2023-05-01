@@ -1,6 +1,6 @@
 import pandas as pd
 
-data = pd.read_csv('sleep2.csv')
+data = pd.read_csv('tmpSleep2.csv')
 test_df = data[~data['폐업여부'].str.contains('Y')] #페업여부 y는 삭제
 test_df =test_df[test_df['업체명'].str.contains('호텔|모텔', na=False)] #호텔과 모텔만 뽑기
 
