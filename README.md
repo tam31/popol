@@ -33,3 +33,12 @@
 | <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/11.png"/>   | <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/22.png"/> | <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/33.png"/>|   
 | 여행지간 경로보기   |  마이페이지 확정된 여행일정 저장   |  
 | <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/44.png"/>   |  <img width="329" src="https://github.com/tam31/popol/blob/main/wiki/img/66.png"/>     |
+
+
+## 핵심 기능 구현 방법 설명
+
+```
+👉 WIKI에 핵심 기능 구현 코드 및 방법 정리
+```
+
+[1. 공공데이터api를 가져오기](https://github.com/tam31/popol/wiki/1.1-%EA%B3%B5%EA%B3%B5%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8F%AC%ED%84%B8%EC%97%90%EC%84%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)
