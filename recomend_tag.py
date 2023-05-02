@@ -10,7 +10,7 @@ from datetime import date,datetime,time
 
 
 d3 = Input.objects.get(id=42) # id=32 데이터들
-s=""
+s="힐링 바다" #사용자선택태그
 for i in range(d3.tag.count()):
     s += str(d3.tag.all()[i])
     if i != d3.tag.count()-1:
@@ -18,34 +18,24 @@ for i in range(d3.tag.count()):
 
 
 tourList = pd.DataFrame(Tour.objects.values_list('name', 'tag__name'), columns=['name','tag'])
-tourList = tourList.groupby(['name'])['tag'].apply(','.join).reset_index()
-tag = pd.DataFrame([('test',s)], columns=tourList.columns)
-tourList = tourList.groupby(['name'])['tag'].apply(','.join).reset_index()
-
+tourList = tourList.groupby(['name'])['tag'].apply(','.join).reset_index() #각 name별 tag그룹
+tag = pd.DataFrame([('test',s)], columns=tourList.columns) #컬럼명 추출
 tourList = pd.concat([tourList,tag])
 
-counter_vector = CountVectorizer(ngram_range=(1,3))
-c_vector_tags = counter_vector.fit_transform(tourList['tag'])
 
-similarity_tag = cosine_similarity(c_vector_tags, c_vector_tags)
+counter_vector = CountVectorizer(ngram_range=(1,3)) #단어의 빈도수를 숫자로 표현하기 위해
+c_vector_tags = counter_vector.fit_transform(tourList['tag']) #해당 태그를 행렬로 변환
+
+similarity_tag = cosine_similarity(c_vector_tags, c_vector_tags) #코사인 유사도 값
+
 similarity_tag = pd.DataFrame(similarity_tag, index=tourList['name'], columns=tourList['name'])
-# print(similarity_tag)
-
-# 날짜 계산
-# user=Input()
-# start = user.startperiod.split('-')
-
-# end = user.endperiod.split('-')
-# date1 = date(int(start[0]), int(start[1]), int(start[2]))
-# date2 = date(int(end[0]), int(end[1]), int(end[2]))
-# delta = date2 - date1  # 빼기
-# print(delta.days)  # 날짜로 계산
 
 def get_content_based_collabor(tag):
-    tourList = similarity_tag[tag].sort_values(ascending=False)[:20].reset_index()
+    tourList = similarity_tag[tag].sort_values(ascending=False)[:20].reset_index() #태그의 빈도수가 많이 나온 순으로 정렬
     tourListVisit = pd.DataFrame(Tour.objects.values_list('name', 'visitCnt', 'tourLatitude', 'tourLongitude'), columns=['name','visit','latitude','longitude'])
     tourList = tourList.merge(tourListVisit, on="name", how= 'inner')
     tourList = tourList.sort_values(by=[tourList.columns[1], tourList.columns[2]], ascending=False)
+    print(tourList)
 
     tourList = tourList.sort_values(by=[tourList.columns[1], tourList.columns[2],tourList.columns[3],tourList.columns[4], tourList.columns[2]], ascending=False)[:10]
     tourList.drop(tourList.columns[[3,4]], axis='columns')
