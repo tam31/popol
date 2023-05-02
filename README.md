@@ -46,3 +46,9 @@
 [2. 숙박데이터 폐업여부 등의 신뢰성검사](https://github.com/tam31/popol/wiki/1.1-%EA%B3%B5%EA%B3%B5%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8F%AC%ED%84%B8%EC%97%90%EC%84%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)
 
 [3. 네이버지도 클로링](https://github.com/tam31/popol/wiki/1.3-%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%A7%80%EB%8F%84-%ED%81%B4%EB%A1%9C%EB%A7%81)
+
+[4. 태그 데이터](https://github.com/tam31/popol/wiki/1.4-%ED%83%9C%EA%B7%B8%EB%8D%B0%EC%9D%B4%ED%84%B0)
+
+[5.1 추천시스템(관광지)](https://github.com/tam31/popol/wiki/1.5.1-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C(%EA%B4%80%EA%B4%91%EC%A7%80))
+
+[5.2 추천시스템(식당,숙소)](https://github.com/tam31/popol/wiki/1.5.2-%EC%B6%94%EC%B2%9C%EC%8B%9C%EC%8A%A4%ED%85%9C(%EC%9D%8C%EC%8B%9D%EC%A0%90,-%EC%88%99%EB%B0%95))
