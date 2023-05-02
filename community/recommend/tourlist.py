@@ -25,12 +25,10 @@ def recommend(s):
         tourListVisit = pd.DataFrame(Tour.objects.values_list('name', 'visitCnt', 'tourLatitude', 'tourLongitude','tour_url'),
                                      columns=['name', 'visit', 'tourLatitude', 'tourLongitude', 'url'])
         tourList = tourList.merge(tourListVisit, on="name", how='inner')
-        # tourList = tourList.sort_values(by=[tourList.columns[1]], ascending=False)
-        # print(tourList)  # 발표할때 추천자료
-        # print()
+
         tourList = tourList.sort_values(by=[tourList.columns[1], tourList.columns[2]], ascending=False)
-        # print(tourList)#발표할때 추천자료
-        #첫번쨰 관광지와 가까운순 이걸로 할꺼면 tour_url, url 뺴기
+
+        #첫번쨰 관광지와 가까운순
         '''
         List = pd.DataFrame(Tour.objects.values_list('name', 'tourLatitude', 'tourLongitude', 'visitCnt', 'tour_url'),
                             columns=['name', 'tourLatitude', 'tourLongitude', 'visitCnt', 'url'])
@@ -50,8 +48,6 @@ def recommend(s):
         # print(data1)
         '''
         #유사도 순
-        # print('tourList')
-        # print(tourList)
         data1 = []
         for i in range(len(tourList)):
             re1 = tourList.iloc[i]
@@ -67,5 +63,4 @@ def recommend(s):
 
     return get_content_based_collabor('test')
 
-# print(recommend(2,'바다'))
 

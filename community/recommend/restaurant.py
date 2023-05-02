@@ -7,6 +7,7 @@ from community.models import *
 
 def recommend_eat(data2, array):
     List = pd.DataFrame(Restaurant.objects.values_list('name', 'restaurantLatitude', 'restaurantLognitude', 'visitCnt', 'restaurant_url'), columns=['name','restaurantLatitude' ,'restaurantLognitude', 'visitCnt', 'url'])
+    # 음식점과 관광지간의 위치계산
     List['add1'] =abs(List['restaurantLatitude']- data2[1])
     List['add2'] =abs(List['restaurantLognitude']- data2[2])
     List['add3'] = List['add1']+List['add2']
@@ -24,19 +25,12 @@ def recommend_eat(data2, array):
             else:
                 a+= array[i]
 
-        List = List[~List['name'].str.contains(a)]  # 들어가있는 식당 삭제
+        List = List[~List['name'].str.contains(a)]  # 중복식당 확인
 
-    List = List.sort_values(List.columns[5])[:5]  # 가까운순 5개추출
-    # print('식당관광지와 가까운순')
-    # print(List)
+    List = List.sort_values(List.columns[5])[:5]  # 가까운순으로 5개의 식당 추출
     List = List.sort_values(by=[List.columns[3], List.columns[5]], ascending=[False, True])  # 방문순
-    # print('방문순')
-    # print(List)
-
     row_1 = List.iloc[0]
     first = [row_1[0], row_1[1], row_1[2], row_1[4]]
-
-    # print(first)
 
     return first
 

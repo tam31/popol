@@ -12,7 +12,6 @@ def plan(start_time, total_date, s):
     eat_name=[]
     total = []
     next = 0
-    print(1)
     while date != total_date:
         if start_time >= 18:
             re_total = {
@@ -117,5 +116,3 @@ def plan(start_time, total_date, s):
                 start_time = 9
             date+=1
     return total
-#
-# print(plan(20, 2, '바다'))
