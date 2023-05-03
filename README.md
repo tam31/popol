@@ -43,7 +43,7 @@
 
 [1. 공공데이터api를 가져오기](https://github.com/tam31/popol/wiki/1.1-%EA%B3%B5%EA%B3%B5%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8F%AC%ED%84%B8%EC%97%90%EC%84%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)
 
-[2. 숙박데이터 폐업여부 등의 신뢰성검사](https://github.com/tam31/popol/wiki/1.1-%EA%B3%B5%EA%B3%B5%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8F%AC%ED%84%B8%EC%97%90%EC%84%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)
+[2. 숙박데이터 폐업여부 등의 신뢰성검사](https://github.com/tam31/popol/wiki/1.2-%EC%88%99%EB%B0%95%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%90%EC%97%85%EC%97%AC%EB%B6%80(%EC%8B%A0%EB%A2%B0%EC%84%B1%EA%B2%80%EC%82%AC))
 
 [3. 네이버지도 클로링](https://github.com/tam31/popol/wiki/1.3-%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%A7%80%EB%8F%84-%ED%81%B4%EB%A1%9C%EB%A7%81)
 
